@@ -1,8 +1,8 @@
 %define libxkbfile %mklibname xkbfile 1
 Name: libxkbfile
 Summary:  The xkbfile Library
-Version: 1.0.3
-Release: %mkrel 2
+Version: 1.0.4
+Release: %mkrel 1
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
