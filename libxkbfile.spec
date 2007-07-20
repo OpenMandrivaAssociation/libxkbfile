@@ -6,7 +6,7 @@
 Name: libxkbfile
 Summary:  The xkbfile Library
 Version: 1.0.4
-Release: %mkrel 1
+Release: %mkrel 2
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -73,7 +73,7 @@ Requires: %{develname} >= %{version}
 Provides: %{name}-static-devel = %{version}-%{release}
 
 Conflicts: libxorg-x11-static-devel < 7.0
-Obsoletes: %mklibname xkbile 1 -d -s
+Obsoletes: %mklibname xkbfile 1 -d -s
 
 %description -n %{staticdevelname}
 Static development files for %{name}.
