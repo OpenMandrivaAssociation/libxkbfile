@@ -16,6 +16,7 @@ BuildRequires: libx11-devel >= 1.0.0
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-util-macros >= 1.0.1
 
+BuildRoot: %{_tmppath}/%{name}-root
 
 %description
 The xkbfile Library.
