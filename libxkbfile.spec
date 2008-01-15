@@ -6,15 +6,17 @@
 Name: libxkbfile
 Summary:  The xkbfile Library
 Version: 1.0.4
-Release: %mkrel 3
+Release: %mkrel 4
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libxkbfile-%{version}.tar.bz2
 
-BuildRequires: libx11-devel >= 1.0.0
-BuildRequires: x11-proto-devel >= 1.0.0
-BuildRequires: x11-util-macros >= 1.0.1
+BuildRequires: x11-util-macros		>= 1.1.5
+BuildRequires: libx11-devel		>= 1.1.3
+BuildRequires: libdxmcp-devel		>= 1.0.2
+BuildRequires: libau-devel		>= 1.0.3
+BuildRequires: x11-proto-devel		>= 7.3
 
 BuildRoot: %{_tmppath}/%{name}-root
 
