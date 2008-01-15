@@ -14,7 +14,7 @@ Source0: http://xorg.freedesktop.org/releases/individual/lib/libxkbfile-%{versio
 
 BuildRequires: x11-util-macros		>= 1.1.5
 BuildRequires: libx11-devel		>= 1.1.3
-BuildRequires: libdxmcp-devel		>= 1.0.2
+BuildRequires: libxdmcp-devel		>= 1.0.2
 BuildRequires: libxau-devel		>= 1.0.3
 BuildRequires: x11-proto-devel		>= 7.3
 
