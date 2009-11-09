@@ -5,8 +5,8 @@
 
 Name: libxkbfile
 Summary:  The xkbfile Library
-Version: 1.0.5
-Release: %mkrel 3
+Version: 1.0.6
+Release: %mkrel 1
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
