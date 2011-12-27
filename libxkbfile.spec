@@ -1,12 +1,11 @@
 %define major 1
 %define libname %mklibname xkbfile %{major}
 %define develname %mklibname xkbfile -d
-%define staticdevelname %mklibname xkbfile -d -s
 
 Name: libxkbfile
 Summary:  The xkbfile Library
 Version: 1.0.7
-Release: %mkrel 2
+Release: 3
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -16,12 +15,8 @@ BuildRequires: libx11-devel >= 1.0.0
 BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-util-macros >= 1.0.1
 
-BuildRoot: %{_tmppath}/%{name}-root
-
 %description
 The xkbfile Library.
-
-#-----------------------------------------------------------
 
 %package -n %{libname}
 Summary:  The xkbfile Library
@@ -32,30 +27,43 @@ Provides: %{name} = %{version}
 %description -n %{libname}
 The xkbfile Library.
 
-#-----------------------------------------------------------
-
 %package -n %{develname}
 Summary: Development files for %{name}
 Group: Development/X11
 Requires: %{libname} >= %{version}
-Requires: x11-proto-devel >= 1.0.0
 Provides: %{name}-devel = %{version}-%{release}
-
 Conflicts: libxorg-x11-devel < 7.0
-Obsoletes: %mklibname xkbfile 1 -d
+Obsoletes: %{_lib}xkbfile1-devel
+Obsoletes: %{_lib}xkbfile-static-devel
 
 %description -n %{develname}
 Development files for %{name}
+
+%prep
+%setup -qn libxkbfile-%{version}
+
+%build
+%configure2_5x \
+	--disable-static \
+	--x-includes=%{_includedir} \
+	--x-libraries=%{_libdir}
+
+%make
+
+%install
+rm -rf %{buildroot}
+%makeinstall_std
 
 %pre -n %{develname}
 if [ -h %{_includedir}/X11 ]; then
 	rm -f %{_includedir}/X11
 fi
 
+%files -n %{libname}
+%{_libdir}/libxkbfile.so.%{major}*
+
 %files -n %{develname}
-%defattr(-,root,root)
 %{_libdir}/libxkbfile.so
-%{_libdir}/libxkbfile.la
 %{_libdir}/pkgconfig/xkbfile.pc
 %{_includedir}/X11/extensions/XKM.h
 %{_includedir}/X11/extensions/XKBrules.h
@@ -64,49 +72,3 @@ fi
 %{_includedir}/X11/extensions/XKBfile.h
 %{_includedir}/X11/extensions/XKBbells.h
 
-#-----------------------------------------------------------
-
-%package -n %{staticdevelname}
-Summary: Static development files for %{name}
-Group: Development/X11
-Requires: %{develname} >= %{version}
-Provides: %{name}-static-devel = %{version}-%{release}
-
-Conflicts: libxorg-x11-static-devel < 7.0
-Obsoletes: %mklibname xkbfile 1 -d -s
-
-%description -n %{staticdevelname}
-Static development files for %{name}.
-
-%files -n %{staticdevelname}
-%defattr(-,root,root)
-%{_libdir}/libxkbfile.a
-
-#-----------------------------------------------------------
-
-%prep
-%setup -q -n libxkbfile-%{version}
-
-%build
-%configure2_5x	--x-includes=%{_includedir}\
-		--x-libraries=%{_libdir}
-
-%make
-
-%install
-rm -rf %{buildroot}
-%makeinstall_std
-
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%files -n %{libname}
-%defattr(-,root,root)
-%{_libdir}/libxkbfile.so.%{major}*
