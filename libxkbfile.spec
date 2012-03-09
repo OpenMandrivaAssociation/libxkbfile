@@ -4,8 +4,8 @@
 
 Name: libxkbfile
 Summary:  The xkbfile Library
-Version: 1.0.7
-Release: 4
+Version: 1.0.8
+Release: 1
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
