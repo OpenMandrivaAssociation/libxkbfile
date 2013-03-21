@@ -10,6 +10,7 @@ Group:		Development/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/libxkbfile-%{version}.tar.bz2
+Patch0:		libxkb-aarch64.patch
 
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	x11-proto-devel >= 1.0.0
@@ -41,6 +42,7 @@ Development files for %{name}
 
 %prep
 %setup -qn libxkbfile-%{version}
+%patch0 -p1
 
 %build
 %configure2_5x \
