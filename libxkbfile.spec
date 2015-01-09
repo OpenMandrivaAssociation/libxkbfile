@@ -40,7 +40,9 @@ Development files for %{name}
 %apply_patches
 
 %build
-%configure2_5x \
+%global optflags %optflags -Wno-error -Wno-pointer-bool-conversion
+
+%configure \
 	--disable-static \
 	--x-includes=%{_includedir} \
 	--x-libraries=%{_libdir}
@@ -62,4 +64,3 @@ Development files for %{name}
 %{_includedir}/X11/extensions/XKMformat.h
 %{_includedir}/X11/extensions/XKBfile.h
 %{_includedir}/X11/extensions/XKBbells.h
-
