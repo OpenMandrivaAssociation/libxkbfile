@@ -4,13 +4,12 @@
 
 Summary:	The xkbfile Library
 Name:		libxkbfile
-Version:	1.0.8
-Release:	10
+Version:	1.0.9
+Release:	1
 Group:		Development/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/libxkbfile-%{version}.tar.bz2
-Patch0:		libxkb-aarch64.patch
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xorg-macros)
 BuildRequires:	pkgconfig(xproto)
@@ -37,7 +36,6 @@ Development files for %{name}
 
 %prep
 %setup -qn libxkbfile-%{version}
-%apply_patches
 
 %build
 %global optflags %optflags -Wno-error -Wno-pointer-bool-conversion
