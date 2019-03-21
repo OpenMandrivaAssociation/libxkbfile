@@ -4,8 +4,8 @@
 
 Summary:	The xkbfile Library
 Name:		libxkbfile
-Version:	1.0.9
-Release:	6
+Version:	1.1.0
+Release:	1
 Group:		Development/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
@@ -35,7 +35,7 @@ Provides:	%{name}-devel = %{version}-%{release}
 Development files for %{name}
 
 %prep
-%setup -qn libxkbfile-%{version}
+%autosetup -n libxkbfile-%{version} -p1
 
 %build
 %global optflags %optflags -Wno-error -Wno-pointer-bool-conversion
@@ -45,10 +45,10 @@ Development files for %{name}
 	--x-includes=%{_includedir} \
 	--x-libraries=%{_libdir}
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libname}
 %{_libdir}/libxkbfile.so.%{major}*
