@@ -2,14 +2,16 @@
 %define libname %mklibname xkbfile %{major}
 %define devname %mklibname xkbfile -d
 
+%global optflags %{optflags} -Wno-error -Wno-pointer-bool-conversion
+
 Summary:	The xkbfile Library
 Name:		libxkbfile
-Version:	1.1.0
+Version:	1.1.1
 Release:	1
 Group:		Development/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
-Source0:	http://xorg.freedesktop.org/releases/individual/lib/libxkbfile-%{version}.tar.bz2
+Source0:	http://xorg.freedesktop.org/releases/individual/lib/libxkbfile-%{version}.tar.xz
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xorg-macros)
 BuildRequires:	pkgconfig(xproto)
@@ -38,8 +40,6 @@ Development files for %{name}
 %autosetup -n libxkbfile-%{version} -p1
 
 %build
-%global optflags %optflags -Wno-error -Wno-pointer-bool-conversion
-
 %configure \
 	--disable-static \
 	--x-includes=%{_includedir} \
