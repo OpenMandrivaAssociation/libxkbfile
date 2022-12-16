@@ -6,7 +6,7 @@
 
 Summary:	The xkbfile Library
 Name:		libxkbfile
-Version:	1.1.1
+Version:	1.1.2
 Release:	1
 Group:		Development/X11
 License:	MIT
@@ -34,7 +34,7 @@ Requires:	%{libname} >= %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n %{devname}
-Development files for %{name}
+Development files for %{name}.
 
 %prep
 %autosetup -n libxkbfile-%{version} -p1
