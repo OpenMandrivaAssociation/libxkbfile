@@ -14,7 +14,6 @@ URL:		https://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/libxkbfile-%{version}.tar.xz
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libtool-base
 BuildRequires:	slibtool
 BuildRequires:	make
 BuildRequires:	pkgconfig(x11)
@@ -43,6 +42,7 @@ Development files for %{name}.
 
 %prep
 %autosetup -n libxkbfile-%{version} -p1
+slibtoolize --force
 
 %build
 %configure \
@@ -50,10 +50,10 @@ Development files for %{name}.
 	--x-includes=%{_includedir} \
 	--x-libraries=%{_libdir}
 
-%make_build
+%make_build LIBTOOL=rclibtool
 
 %install
-%make_install
+%make_install LIBTOOL=rclibtool
 
 %files -n %{libname}
 %{_libdir}/libxkbfile.so.%{major}*
