@@ -39,7 +39,6 @@ Development files for %{name}.
 
 %prep
 %autosetup -n libxkbfile-%{version} -p1
-slibtoolize --force
 
 %build
 %meson
