@@ -12,10 +12,7 @@ Group:		Development/X11
 License:	MIT
 URL:		https://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/libxkbfile-%{version}.tar.xz
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	slibtool
-BuildRequires:	make
+BuildRequires:	meson
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xorg-macros)
 BuildRequires:	pkgconfig(xproto)
@@ -42,18 +39,14 @@ Development files for %{name}.
 
 %prep
 %autosetup -n libxkbfile-%{version} -p1
-slibtoolize --force
 
 %build
-%configure \
-	--disable-static \
-	--x-includes=%{_includedir} \
-	--x-libraries=%{_libdir}
+%meson
 
-%make_build LIBTOOL=rclibtool
+%meson_build
 
 %install
-%make_install LIBTOOL=rclibtool
+%meson_install
 
 %files -n %{libname}
 %{_libdir}/libxkbfile.so.%{major}*
