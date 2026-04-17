@@ -6,7 +6,7 @@
 
 Summary:	The xkbfile Library
 Name:		libxkbfile
-Version:	1.1.3
+Version:	1.2.0
 Release:	1
 Group:		Development/X11
 License:	MIT
